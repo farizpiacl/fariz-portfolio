@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Fariz | AI Engineer & Python Developer</title>
+<meta name="description" content="Portfolio of Muhammad Fariz, an AI Engineer and Artificial Intelligence undergraduate specializing in Python, Machine Learning, Data Science, Flask, and database-driven software development.">
+<meta property="og:title" content="Muhammad Fariz | AI Engineer & Python Developer">
+<meta property="og:description" content="AI Engineer and AI undergraduate building production-oriented, database-driven software systems with Python, Flask, and PostgreSQL.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230A0E14'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23F2A93B' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23F2A93B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E14;
+  --panel:#111725;
+  --panel-2:#151C2C;
+  --border:#212C40;
+  --text:#E7ECF3;
+  --muted:#8993A6;
+  --muted-2:#5D6880;
+  --amber:#F2A93B;
+  --teal:#3ED6C4;
+  --danger-glow: rgba(242,169,59,0.18);
+  --focus:var(--teal);
+}
+:root[data-theme="light"]{
+  --bg:#F7F8FA;
+  --panel:#FFFFFF;
+  --panel-2:#F0F2F6;
+  --border:#DDE2EA;
+  --text:#171B24;
+  --muted:#525B6E;
+  --muted-2:#7B8496;
+  --amber:#B8760A;
+  --teal:#1A8F80;
+  --danger-glow: rgba(184,118,10,0.14);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'IBM Plex Sans', sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  transition:background .3s ease, color .3s ease;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+@media (max-width:640px){.wrap{padding:0 20px;}}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+/* ---------- NAV ---------- */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  border-bottom:1px solid transparent;
+  transition:background .35s ease, border-color .35s ease, padding .35s ease;
+  background:rgba(10,14,20,0);
+}
+header.scrolled{
+  background:rgba(10,14,20,0.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:26px 0;
+  transition:padding .35s ease;
+}
+header.scrolled nav{padding:16px 0;}
+.logo{
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:600; font-size:17px; color:var(--text);
+  display:flex; align-items:center; gap:10px;
+}
+.logo-mark{
+  width:9px; height:9px; border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 3px var(--danger-glow);
+}
+.nav-links{display:flex; align-items:center; gap:34px; list-style:none;}
+.nav-links a{
+  font-size:14px; color:var(--muted); position:relative; padding:4px 0;
+  transition:color .25s ease;
+}
+.nav-links a:hover, .nav-links a.active{color:var(--text);}
+.nav-links a.active::after{
+  content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--amber);
+}
+.nav-links a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--teal); outline-offset:3px; border-radius:2px;
+}
+#theme-toggle{
+  background:none; border:1px solid var(--border); border-radius:8px;
+  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  color:var(--muted); cursor:pointer; transition:border-color .25s, color .25s;
+}
+#theme-toggle:hover{border-color:var(--amber); color:var(--amber);}
+.hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
+.hamburger span{width:22px; height:1.5px; background:var(--text); display:block; transition:.3s;}
+.mobile-menu{
+  position:fixed; inset:0; background:rgba(10,14,20,0.98); z-index:99;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+  opacity:0; pointer-events:none; transition:opacity .3s ease;
+}
+.mobile-menu.open{opacity:1; pointer-events:auto;}
+.mobile-menu a{font-size:22px; font-family:'Space Grotesk'; color:var(--text);}
+.mobile-menu .close-btn{position:absolute; top:26px; right:26px; background:none; border:none; color:var(--text); font-size:26px; cursor:pointer;}
+.nav-cta{margin-left:8px;}
+nav{gap:18px;}
+@media (max-width:820px){
+  .nav-links, .nav-cta{display:none;}
+  .hamburger{display:flex;}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative; min-height:100vh; display:flex; align-items:center;
+  padding-top:120px; padding-bottom:80px; overflow:hidden;
+}
+#hero-canvas{position:absolute; inset:0; width:100%; height:100%; opacity:0.55;}
+.hero-inner{position:relative; z-index:2; max-width:760px;}
+.badge{
+  display:inline-flex; align-items:center; gap:10px;
+  border:1px solid var(--border); border-radius:100px; padding:7px 16px;
+  font-family:'IBM Plex Mono'; font-size:12px; color:var(--muted); margin-bottom:28px;
+  background:rgba(17,23,37,0.6);
+}
+.badge .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 8px var(--teal);}
+.hero h1{
+  font-size:clamp(42px, 7vw, 74px);
+  line-height:1.02;
+  color:var(--text);
+  margin-bottom:18px;
+}
+.hero .role{
+  font-size:clamp(17px, 2.4vw, 22px);
+  color:var(--amber);
+  font-family:'Space Grotesk';
+  font-weight:500;
+  margin-bottom:22px;
+}
+.hero p.lead{
+  font-size:17px; color:var(--muted); max-width:540px; margin-bottom:38px;
+}
+.cta-row{display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-bottom:34px;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:13px 26px; border-radius:8px; font-size:14px; font-weight:500;
+  font-family:'Space Grotesk'; cursor:pointer; border:1px solid transparent;
+  transition:transform .2s ease, background .25s ease, border-color .25s ease, color .25s ease;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--amber); color:#191203;}
+.btn-primary:hover{background:#f5bb5c;}
+.btn-outline{border-color:var(--border); color:var(--text);}
+.btn-outline:hover{border-color:var(--teal); color:var(--teal);}
+.social-row{display:flex; gap:18px; font-family:'IBM Plex Mono'; font-size:13px; color:var(--muted-2);}
+.social-row span{border-bottom:1px dashed var(--border); padding-bottom:2px;}
+
+/* ---------- SECTION SHELL ---------- */
+section{padding:120px 0; position:relative;}
+@media (max-width:640px){section{padding:80px 0;}}
+.section-head{margin-bottom:56px; max-width:620px;}
+.section-num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--amber); margin-bottom:14px; display:block;}
+.section-head h2{font-size:clamp(28px, 4vw, 40px); color:var(--text); margin-bottom:16px;}
+.section-head p{color:var(--muted); font-size:15.5px;}
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:start;}
+@media (max-width:880px){.about-grid{grid-template-columns:1fr; gap:40px;}}
+.about-text p{color:var(--muted); font-size:16px; margin-bottom:18px;}
+.about-text strong{color:var(--text); font-weight:500;}
+.what-i-do{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media (max-width:480px){.what-i-do{grid-template-columns:1fr;}}
+.do-card{
+  border:1px solid var(--border); border-radius:12px; padding:22px;
+  background:var(--panel); transition:border-color .3s ease, transform .3s ease;
+}
+.do-card:hover{border-color:var(--teal); transform:translateY(-3px);}
+.do-card h4{font-size:15px; color:var(--text); margin-bottom:8px;}
+.do-card p{font-size:13.5px; color:var(--muted); line-height:1.55;}
+
+/* ---------- EXPERIENCE TIMELINE ---------- */
+.timeline{position:relative; padding-left:32px; border-left:1px solid var(--border);}
+.tl-item{position:relative; padding-bottom:56px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{
+  position:absolute; left:-37px; top:4px; width:12px; height:12px; border-radius:50%;
+  background:var(--bg); border:2px solid var(--amber);
+}
+.tl-item.current .tl-dot{background:var(--amber); box-shadow:0 0 0 4px var(--danger-glow);}
+.tl-date{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--teal); margin-bottom:8px; display:block;}
+.tl-item h3{font-size:19px; color:var(--text); margin-bottom:2px;}
+.tl-org{font-size:14px; color:var(--muted-2); margin-bottom:14px; display:block;}
+.tl-item ul{list-style:none; color:var(--muted); font-size:14.5px;}
+.tl-item ul li{position:relative; padding-left:18px; margin-bottom:8px;}
+.tl-item ul li::before{content:''; position:absolute; left:0; top:9px; width:5px; height:5px; background:var(--muted-2); border-radius:50%;}
+
+/* ---------- SKILLS ---------- */
+.skills-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:20px;}
+@media (max-width:720px){.skills-grid{grid-template-columns:1fr;}}
+.skill-cat{
+  border:1px solid var(--border); border-radius:12px; padding:26px 24px; background:var(--panel);
+}
+.skill-cat h4{
+  font-family:'IBM Plex Mono'; font-size:12.5px; letter-spacing:.02em; color:var(--muted-2);
+  margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid var(--border);
+}
+.tag-cloud{display:flex; flex-wrap:wrap; gap:9px;}
+.tag{
+  font-size:13px; padding:7px 13px; border-radius:100px; border:1px solid var(--border);
+  color:var(--text); background:var(--panel-2); transition:border-color .25s, color .25s;
+}
+.tag:hover{border-color:var(--amber); color:var(--amber);}
+
+/* ---------- PROJECTS ---------- */
+.projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+@media (max-width:820px){.projects-grid{grid-template-columns:1fr;}}
+.proj-card{
+  border:1px solid var(--border); border-radius:14px; padding:30px; background:var(--panel);
+  position:relative; overflow:hidden; transition:transform .3s ease, border-color .3s ease;
+  display:flex; flex-direction:column; min-height:230px;
+}
+.proj-card:hover{transform:translateY(-4px); border-color:var(--teal);}
+.proj-icon{
+  width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  margin-bottom:20px; font-family:'Space Grotesk'; font-weight:600; font-size:16px;
+}
+.proj-card h3{font-size:18px; color:var(--text); margin-bottom:4px;}
+.proj-org{font-family:'IBM Plex Mono'; font-size:12px; color:var(--muted-2); margin-bottom:14px; display:block;}
+.proj-card p.desc{color:var(--muted); font-size:14.5px; margin-bottom:20px; flex-grow:1;}
+.proj-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;}
+.proj-tags span{font-family:'IBM Plex Mono'; font-size:11px; color:var(--muted-2); border:1px solid var(--border); padding:4px 9px; border-radius:6px;}
+.proj-cta{font-size:13px; color:var(--muted-2); font-family:'IBM Plex Mono'; border-top:1px solid var(--border); padding-top:16px; margin-top:auto;}
+
+/* ---------- EDUCATION ---------- */
+.edu-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+@media (max-width:720px){.edu-grid{grid-template-columns:1fr;}}
+.edu-card{border:1px solid var(--border); border-radius:12px; padding:28px; background:var(--panel);}
+.edu-card .tl-date{margin-bottom:14px;}
+.edu-card h3{font-size:18px; color:var(--text); margin-bottom:6px;}
+.edu-card .org{font-size:14px; color:var(--muted); margin-bottom:4px; display:block;}
+.edu-card .meta{font-size:13px; color:var(--muted-2); font-family:'IBM Plex Mono';}
+
+/* ---------- HIGHLIGHT ---------- */
+.highlight{
+  border:1px solid var(--border); border-radius:18px; padding:64px 48px; text-align:center;
+  background:linear-gradient(160deg, var(--panel) 0%, var(--panel-2) 100%);
+  position:relative;
+}
+.highlight h2{font-size:clamp(24px,3.6vw,34px); max-width:761px; margin:0 auto 18px; line-height:1.35; color:var(--text);}
+.highlight .tags-row{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:26px;}
+.highlight .tags-row span{font-family:'IBM Plex Mono'; font-size:13px; color:var(--amber); border:1px solid var(--border); padding:8px 16px; border-radius:100px;}
+@media (max-width:640px){.highlight{padding:44px 26px;}}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid; grid-template-columns:1fr; gap:56px; max-width:640px;}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr; gap:36px;}}
+.contact-info p{color:var(--muted); font-size:15.5px; margin-bottom:26px;}
+.contact-item{display:flex; align-items:center; gap:14px; margin-bottom:18px; font-size:14.5px;}
+.contact-item .ic{width:34px; height:34px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--teal); flex-shrink:0;}
+.contact-item span.label{color:var(--muted-2); font-family:'IBM Plex Mono'; font-size:11px; display:block;}
+.contact-item span.value{color:var(--text);}
+form{display:flex; flex-direction:column; gap:16px;}
+.field label{display:block; font-size:12.5px; font-family:'IBM Plex Mono'; color:var(--muted-2); margin-bottom:8px;}
+.field input, .field textarea{
+  width:100%; background:var(--panel); border:1px solid var(--border); border-radius:8px;
+  padding:13px 15px; color:var(--text); font-family:'IBM Plex Sans'; font-size:14.5px;
+  transition:border-color .25s ease;
+}
+.field input:focus, .field textarea:focus{border-color:var(--teal); outline:none;}
+.field textarea{resize:vertical; min-height:120px;}
+.form-note{font-size:12px; color:var(--muted-2); margin-top:-4px;}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--border); padding:56px 0 40px;}
+.footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; margin-bottom:36px;}
+.footer-brand h4{font-size:16px; color:var(--text); margin-bottom:6px;}
+.footer-brand p{font-size:13.5px; color:var(--muted-2);}
+.footer-links{display:flex; gap:26px; list-style:none; flex-wrap:wrap;}
+.footer-links a{font-size:13.5px; color:var(--muted);}
+.footer-links a:hover{color:var(--amber);}
+.footer-bottom{font-size:12.5px; color:var(--muted-2); font-family:'IBM Plex Mono'; border-top:1px solid var(--border); padding-top:24px;}
+
+/* counter numbers */
+.stat-row{display:flex; gap:44px; margin-top:36px; flex-wrap:wrap;}
+`{}
+.stat .num{font-family:'Space Grotesk'; font-size:32px; color:var(--amber); font-weight:600;}
+.stat .lbl{font-size:12.5px; color:var(--muted-2); font-family:'IBM Plex Mono'; margin-top:4px;}
+
+/* ---------- SKIP LINK ---------- */
+.skip-link{
+  position:absolute; left:12px; top:-60px; z-index:200;
+  background:var(--amber); color:#191203; padding:10px 18px; border-radius:8px;
+  font-family:'Space Grotesk'; font-weight:600; font-size:13px; transition:top .2s ease;
+}
+.skip-link:focus{top:12px;}
+
+/* ---------- PROJECT FILTERS ---------- */
+.filter-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;}
+.filter-btn{
+  font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--muted); background:var(--panel);
+  border:1px solid var(--border); border-radius:100px; padding:8px 16px; cursor:pointer;
+  transition:border-color .2s ease, color .2s ease, background .2s ease;
+}
+.filter-btn:hover{border-color:var(--teal); color:var(--teal);}
+.filter-btn.active{background:var(--amber); border-color:var(--amber); color:#191203;}
+.proj-card{cursor:pointer;}
+.proj-card.hide{display:none;}
+.proj-card:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+.proj-cta{cursor:pointer;}
+.proj-cta:hover{color:var(--amber);}
+.no-results{color:var(--muted-2); font-family:'IBM Plex Mono'; font-size:14px; padding:20px 0;}
+
+/* ---------- PROJECT MODAL ---------- */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(6,8,12,0.72); z-index:200;
+  display:flex; align-items:center; justify-content:center; padding:24px;
+  opacity:0; pointer-events:none; transition:opacity .25s ease;
+}
+.modal-overlay.open{opacity:1; pointer-events:auto;}
+.modal-box{
+  background:var(--panel); border:1px solid var(--border); border-radius:16px;
+  max-width:640px; width:100%; max-height:85vh; overflow-y:auto; padding:36px;
+  transform:translateY(16px); transition:transform .25s ease;
+}
+.modal-overlay.open .modal-box{transform:translateY(0);}
+.modal-close{
+  float:right; background:none; border:1px solid var(--border); border-radius:8px;
+  width:34px; height:34px; color:var(--text); font-size:18px; cursor:pointer; line-height:1;
+}
+.modal-close:hover{border-color:var(--amber); color:var(--amber);}
+.modal-box h3{font-size:22px; color:var(--text); margin-bottom:2px; clear:none;}
+.modal-org{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--muted-2); display:block; margin-bottom:22px;}
+.modal-box h5{font-family:'IBM Plex Mono'; font-size:12px; color:var(--amber); text-transform:uppercase; letter-spacing:.03em; margin:20px 0 8px;}
+.modal-box p, .modal-box li{color:var(--muted); font-size:14.5px; line-height:1.6;}
+.modal-box ul{padding-left:18px; margin-top:6px;}
+.modal-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;}
+.modal-tags span{font-family:'IBM Plex Mono'; font-size:11.5px; color:var(--text); border:1px solid var(--border); padding:5px 11px; border-radius:6px;}
+
+/* ---------- BACK TO TOP ---------- */
+#back-to-top{
+  position:fixed; bottom:24px; right:24px; z-index:90;
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--border);
+  background:var(--panel); color:var(--text); cursor:pointer; display:flex;
+  align-items:center; justify-content:center; opacity:0; pointer-events:none;
+  transform:translateY(8px); transition:opacity .25s ease, transform .25s ease, border-color .25s ease;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+#back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+#back-to-top:hover{border-color:var(--amber); color:var(--amber);}
+
+/* ---------- EXPERIENCE EXPAND ---------- */
+.tl-toggle{
+  background:none; border:none; color:var(--teal); font-family:'IBM Plex Mono';
+  font-size:12.5px; cursor:pointer; padding:0; margin-top:6px; display:inline-block;
+}
+.tl-toggle:hover{color:var(--amber);}
+.tl-item ul.collapsible{max-height:1000px; overflow:hidden;}
+.tl-item ul.collapsible.collapsed{max-height:2.6em;}
+
+/* ---------- COPY EMAIL ---------- */
+.copy-btn{
+  background:none; border:1px solid var(--border); border-radius:6px; color:var(--muted);
+  font-family:'IBM Plex Mono'; font-size:11px; padding:4px 9px; margin-left:10px; cursor:pointer;
+  transition:border-color .2s ease, color .2s ease;
+}
+.copy-btn:hover{border-color:var(--teal); color:var(--teal);}
+
+/* ---------- FORM STATES ---------- */
+.field input.error, .field textarea.error{border-color:#E5674A;}
+.field-error{color:#E5674A; font-size:12px; margin-top:-8px; display:none;}
+.field-error.show{display:block;}
+.form-success{
+  display:none; align-items:center; gap:10px; color:var(--teal); font-size:14px;
+  border:1px solid var(--border); border-radius:8px; padding:14px 16px; background:var(--panel-2);
+}
+.form-success.show{display:flex;}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header id="site-header">
+  <div class="wrap">
+    <nav>
+      <a href="#home" class="logo"><span class="logo-mark"></span>Muhammad Fariz</a>
+      <ul class="nav-links">
+        <li><a href="#home" data-nav>Home</a></li>
+        <li><a href="#about" data-nav>About</a></li>
+        <li><a href="#experience" data-nav>Experience</a></li>
+        <li><a href="#skills" data-nav>Skills</a></li>
+        <li><a href="#projects" data-nav>Projects</a></li>
+        <li><a href="#education" data-nav>Education</a></li>
+        <li><a href="#contact" data-nav>Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta" style="padding:9px 18px; font-size:13px;">Contact Me</a>
+      <button id="theme-toggle" aria-label="Switch to light theme" aria-pressed="false">
+        <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="close-btn" id="close-menu" aria-label="Close menu">&times;</button>
+  <a href="#home" data-nav>Home</a>
+  <a href="#about" data-nav>About</a>
+  <a href="#experience" data-nav>Experience</a>
+  <a href="#skills" data-nav>Skills</a>
+  <a href="#projects" data-nav>Projects</a>
+  <a href="#education" data-nav>Education</a>
+  <a href="#contact" data-nav>Contact</a>
+</div>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="wrap hero-inner">
+    <div class="badge"><span class="dot"></span>AI Engineer • Python Developer • Machine Learning</div>
+    <h1>Muhammad Fariz</h1>
+    <div class="role">AI Engineer &amp; Python Developer</div>
+    <p class="lead">I build database-driven, production-ready software systems that turn manual workflows into secure, role-based applications, and I develop AI solutions using machine learning and deep learning. As an Artificial Intelligence undergraduate with hands-on Python and Flask engineering experience, I bridge intelligent models and real-world software.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-count="4">0</div><div class="lbl">SYSTEMS SHIPPED AT PIA</div></div>
+      <div class="stat"><div class="num" data-count="4">0</div><div class="lbl">ROLES ACROSS AI, DATA &amp; NETWORKING</div></div>
+      <div class="stat"><div class="num" data-count="5">0</div><div class="lbl">SEMESTER, BSAI</div></div>
+    </div>
+    <div class="tag-cloud" style="margin-top:32px;" aria-label="Core focus areas">
+      <span class="tag">AI Engineer</span><span class="tag">Python Developer</span><span class="tag">Machine Learning</span><span class="tag">Data Science</span><span class="tag">Flask / Backend</span><span class="tag">PostgreSQL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">01 · About</span>
+      <h2>An AI undergraduate who ships production code</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p><strong>Artificial Intelligence undergraduate</strong> at Air University, currently building hands-on industry experience in a production airline environment rather than only studying it in theory.</p>
+        <p>At Pakistan International Airlines, I develop <strong>role-based, database-driven applications</strong> for HR, Engineering, and Quality Assurance departments — including dashboards, reporting, and workflow automation built on <strong>Python, Flask, PostgreSQL, and SQLAlchemy</strong>.</p>
+        <p>Alongside that, I'm growing a foundation in <strong>machine learning, data science, and statistical analysis</strong>, with the goal of moving deeper into AI/ML and data-focused engineering roles. I'm also actively exploring <strong>deep learning, computer vision, and natural language processing (NLP)</strong>.</p>
+      </div>
+      <div class="what-i-do reveal">
+        <div class="do-card">
+          <h4>AI &amp; Machine Learning</h4>
+          <p>Machine learning, predictive analytics, data analysis and AI-oriented development.</p>
+        </div>
+        <div class="do-card">
+          <h4>Exploring: Deep Learning, CV &amp; NLP</h4>
+          <p>Currently exploring deep learning, computer vision and natural language processing.</p>
+        </div>
+        <div class="do-card">
+          <h4>Python Development</h4>
+          <p>Python, Flask, backend systems and REST/API development.</p>
+        </div>
+        <div class="do-card">
+          <h4>Data &amp; Databases</h4>
+          <p>PostgreSQL, SQLAlchemy, database design and data analysis.</p>
+        </div>
+        <div class="do-card">
+          <h4>Business Applications</h4>
+          <p>Role-based systems, dashboards, reporting and workflow automation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">02 · Experience</span>
+      <h2>Where I've built things</h2>
+      <p>Four roles spanning AI engineering, data analysis, design, and networking — each grounded in a real department's workflow.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item current">
+        <div class="tl-dot"></div>
+        <span class="tl-date">JUL 2026 — SEP 2026</span>
+        <h3>AI Engineer</h3>
+        <span class="tl-org">Pakistan International Airlines (PIA)</span>
+        <ul>
+          <li>Develop AI-enabled, database-driven internal software systems for HR, Engineering, and Quality Assurance, digitizing manual departmental workflows.</li>
+          <li>Build and deploy applications using Python, Flask, PostgreSQL, and SQLAlchemy, implementing role-based access, dashboards, reporting, and workflow automation.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-date">MAR 2026 — MAY 2026</span>
+        <h3>Data Analyst</h3>
+        <span class="tl-org">Bricklix</span>
+        <ul>
+          <li>Analyzed and interpreted business data to generate insights supporting data-driven decision-making.</li>
+          <li>Prepared reports and performed data processing to identify trends, patterns, and actionable findings.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-date">DEC 2025 — MAY 2026</span>
+        <h3>Graphic Designer</h3>
+        <span class="tl-org">Bricklix</span>
+        <ul>
+          <li>Designed visual assets and marketing materials aligned with brand identity and communication objectives.</li>
+          <li>Created digital graphics and promotional content for business and marketing initiatives.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-date">JUN 2025 — AUG 2025</span>
+        <h3>Networking Engineer</h3>
+        <span class="tl-org">National Aerospace Science &amp; Technology Park (NASTP)</span>
+        <ul>
+          <li>Gained hands-on experience with networking infrastructure, connectivity, and technical system support.</li>
+          <li>Assisted with network troubleshooting and developed practical understanding of enterprise IT and networking environments.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">03 · Skills</span>
+      <h2>Toolkit</h2>
+      <p>Grouped by where each skill actually gets used, not ranked by an arbitrary score.</p>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-cat">
+        <h4>PROGRAMMING</h4>
+        <div class="tag-cloud">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>AI / ML / DATA</h4>
+        <div class="tag-cloud">
+          <span class="tag">Artificial Intelligence</span><span class="tag">Machine Learning</span><span class="tag">Data Science</span><span class="tag">Data Analysis</span><span class="tag">Statistical Analysis</span><span class="tag">Predictive Analytics</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>DEVELOPMENT</h4>
+        <div class="tag-cloud">
+          <span class="tag">Flask</span><span class="tag">REST / API Development</span><span class="tag">Backend Development</span><span class="tag">Role-Based Access Control</span><span class="tag">Dashboard Development</span><span class="tag">Workflow Automation</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>DATABASES</h4>
+        <div class="tag-cloud">
+          <span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">Database Design</span><span class="tag">Database Migrations</span>
+        </div>
+      </div>
+      <div class="skill-cat" style="grid-column: 1 / -1;">
+        <h4>TOOLS &amp; PLATFORMS</h4>
+        <div class="tag-cloud">
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Vercel</span><span class="tag">Chart.js</span><span class="tag">Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">04 · Featured Projects</span>
+      <h2>Projects I've built</h2>
+      <p>Real-world web applications and academic projects spanning machine learning, data structures, and object-oriented programming.</p>
+    </div>
+    <div class="filter-row" role="group" aria-label="Filter projects by category">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ai">AI/ML</button>
+      <button class="filter-btn" data-filter="software">Software</button>
+      <button class="filter-btn" data-filter="data">Data</button>
+      <button class="filter-btn" data-filter="pia">PIA Projects</button>
+      <button class="filter-btn" data-filter="academic">Academic</button>
+    </div>
+    <div class="projects-grid reveal" id="projects-grid">
+
+      <div class="proj-card" data-category="software pia" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="SATS — Station Activity Tracking System"
+        data-org="Pakistan International Airlines · Engineering"
+        data-overview="A role-based web system that digitizes aircraft engineering activities and reporting for PIA's Engineering department."
+        data-problem="Engineering activity logs and reports were tracked manually, making them slow to compile and hard to audit or search."
+        data-solution="Built a structured, trackable web application on Flask and PostgreSQL that replaces manual logs with digitized, centralized records."
+        data-features="Structured activity logging|Trackable, searchable records|Role-based access for engineering staff"
+        data-tech="Python|Flask|PostgreSQL">
+        <div class="proj-icon" style="background:rgba(62,214,196,0.12); color:var(--teal);">SA</div>
+        <h3>SATS — Station Activity Tracking System</h3>
+        <span class="proj-org">Pakistan International Airlines · Engineering</span>
+        <p class="desc">Digitized aircraft engineering activities and reporting, replacing manual logs with a structured, trackable system.</p>
+        <div class="proj-tags"><span>Python</span><span>Flask</span><span>PostgreSQL</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="software pia" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="QA Assessment Portal"
+        data-org="Pakistan International Airlines · Quality Assurance"
+        data-overview="A role-based web portal that digitizes QA assessments and departmental review workflows for the Quality Assurance department."
+        data-problem="QA assessments and departmental workflows were handled manually, slowing down evaluation and review cycles."
+        data-solution="Moved evaluation and review into a role-based web portal built with Flask and SQLAlchemy, giving each role a clear digital workflow."
+        data-features="Digitized QA assessments|Role-based evaluation and review flow|Departmental workflow tracking"
+        data-tech="Python|Flask|SQLAlchemy">
+        <div class="proj-icon" style="background:rgba(242,169,59,0.12); color:var(--amber);">QA</div>
+        <h3>QA Assessment Portal</h3>
+        <span class="proj-org">Pakistan International Airlines · Quality Assurance</span>
+        <p class="desc">Digitized QA assessments and departmental workflows, moving evaluation and review into a role-based web portal.</p>
+        <div class="proj-tags"><span>Python</span><span>Flask</span><span>SQLAlchemy</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="software pia" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="Future Talent Onboarding Portal"
+        data-org="Pakistan International Airlines · HR"
+        data-overview="A web application that streamlines employee and intern onboarding for PIA's HR department."
+        data-problem="Onboarding new employees and interns was previously a manual HR process, creating extra administrative overhead."
+        data-solution="Digitized the onboarding process into a structured web application built with Python, Flask, and PostgreSQL."
+        data-features="Streamlined onboarding workflow|Digitized HR process|Structured data storage for onboarding records"
+        data-tech="Python|Flask|PostgreSQL">
+        <div class="proj-icon" style="background:rgba(93,110,232,0.14); color:#8B98F0;">HR</div>
+        <h3>Future Talent Onboarding Portal</h3>
+        <span class="proj-org">Pakistan International Airlines · HR</span>
+        <p class="desc">Streamlined employee and intern onboarding, digitizing what was previously a manual HR process.</p>
+        <div class="proj-tags"><span>Python</span><span>Flask</span><span>PostgreSQL</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="ai software pia" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="Engineer Scheduling & Flight Coverage System"
+        data-org="Pakistan International Airlines · Engineering"
+        data-overview="A scheduling system that automates engineer assignment with AI-assisted logic to help maintain consistent flight coverage."
+        data-problem="Manually scheduling engineers to ensure every flight had adequate coverage was time-consuming and error-prone."
+        data-solution="Automated the scheduling process with AI-assisted logic on top of a Python and Flask application, helping ensure consistent coverage."
+        data-features="Automated engineer scheduling|AI-assisted coverage logic|Flight coverage tracking"
+        data-tech="Python|Flask|AI-assisted logic">
+        <div class="proj-icon" style="background:rgba(242,169,59,0.12); color:var(--amber);">SC</div>
+        <h3>Engineer Scheduling &amp; Flight Coverage System</h3>
+        <span class="proj-org">Pakistan International Airlines · Engineering</span>
+        <p class="desc">Automated engineer scheduling with AI-assisted logic to help ensure consistent flight coverage.</p>
+        <div class="proj-tags"><span>Python</span><span>Flask</span><span>AI-assisted logic</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="ai data academic" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="Heart Disease Prediction"
+        data-org="Academic Project · Machine Learning"
+        data-overview="A machine learning system that predicts the likelihood of heart disease from patient medical data, comparing Random Forest and XGBoost. Built as a team project of four."
+        data-problem="Traditional diagnosis can be time-consuming and dependent on specialist expertise, so a predictive system can help healthcare professionals make faster decisions."
+        data-solution="Cleaned and preprocessed a real-world dataset of 920 patients with 14 medical attributes, trained Random Forest and XGBoost models, and compared them across several metrics. XGBoost was selected as the best-performing model."
+        data-features="Data cleaning: duplicates removed, median/mode imputation for missing values|StandardScaler feature scaling and One-Hot Encoding|80/20 train-test split with side-by-side model comparison|Evaluated with accuracy, precision, recall, F1, ROC-AUC and cross-validation F1"
+        data-tech="Python|Random Forest|XGBoost|Scikit-learn">
+        <div class="proj-icon" style="background:rgba(62,214,196,0.12); color:var(--teal);">HD</div>
+        <h3>Heart Disease Prediction</h3>
+        <span class="proj-org">Academic Project · Machine Learning</span>
+        <p class="desc">Predicts heart disease risk from 14 patient attributes, comparing Random Forest and XGBoost to select the best model.</p>
+        <div class="proj-tags"><span>Python</span><span>Random Forest</span><span>XGBoost</span><span>Scikit-learn</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="ai data academic" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="AI-Based Flight Delay Prediction System"
+        data-org="Academic Project · Machine Learning"
+        data-overview="A classification system that predicts flight delays from weather, schedule, carrier and route data, benchmarking Random Forest against XGBoost."
+        data-problem="Delays cost the aviation industry heavily and disrupt passengers. Weather, congestion and operational bottlenecks make delays hard for manual or rule-based forecasting to predict in real time."
+        data-solution="Built an end-to-end pipeline covering ingestion, cleaning, feature engineering and train/test evaluation on 120K+ flight records. XGBoost performed best at 94.8% test accuracy versus 91.2% for Random Forest."
+        data-features="120K+ flight records with 15-20 engineered features|Weather, schedule, carrier/route and air traffic predictors|XGBoost led Random Forest across accuracy, precision, recall and F1|Designed for operational optimization and early delay notifications"
+        data-tech="Python|Random Forest|XGBoost|Feature Engineering">
+        <div class="proj-icon" style="background:rgba(242,169,59,0.12); color:var(--amber);">FD</div>
+        <h3>AI-Based Flight Delay Prediction System</h3>
+        <span class="proj-org">Academic Project · Machine Learning</span>
+        <p class="desc">Predicts flight delays from weather, schedule and route data on 120K+ records; XGBoost reached 94.8% test accuracy.</p>
+        <div class="proj-tags"><span>Python</span><span>Random Forest</span><span>XGBoost</span><span>Feature Engineering</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="ai software academic" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="Intelligent Disease Prediction System"
+        data-org="Academic Project · AI &amp; Data Structures"
+        data-overview="A hybrid C++ and Python system that maps user-selected symptoms to a predicted disease, combining classical data structures with machine learning."
+        data-problem="Medical screening tools should be accessible and fast. This project needed to show how AI and classical data structures can work together in one practical application."
+        data-solution="C++ handles interactive symptom selection using maps and vectors and hands the input to Python through CSV files. A Decision Tree Classifier then predicts the disease with a confidence score, and Flask displays the diagnosis on the web."
+        data-features="Symptom-to-disease mapping with confidence score|Cross-language data sharing between C++ and Python via CSV|Symptoms grouped by body area (Head, Respiratory, etc.)|Web-based interface served with Flask"
+        data-tech="C++|Python|Decision Tree|Flask|pandas">
+        <div class="proj-icon" style="background:rgba(93,110,232,0.14); color:#8B98F0;">ID</div>
+        <h3>Intelligent Disease Prediction System</h3>
+        <span class="proj-org">Academic Project · AI &amp; Data Structures</span>
+        <p class="desc">Hybrid C++/Python tool that maps symptoms to a predicted disease with a confidence score, shown through a Flask web interface.</p>
+        <div class="proj-tags"><span>C++</span><span>Python</span><span>Decision Tree</span><span>Flask</span><span>pandas</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="software academic" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="Civic Issue Reporting System"
+        data-org="Academic Project · Object-Oriented Programming"
+        data-overview="A desktop application in C++ with an SFML graphical interface where citizens report civic issues and admins track and update them."
+        data-problem="Reporting and following up on local civic issues is often informal and untracked, with no clear record of who reported what or its current status."
+        data-solution="Designed an object-oriented system with User, Report and IssueTrackingSystem classes. Reports start as Pending, receive unique IDs, are saved to and loaded from file, and admins update their status."
+        data-features="Citizen and Admin roles with registration and login|Report submission with description, location and unique ID|Admin status updates and lookup by report ID|Input validation, reCAPTCHA-style checkbox and file persistence"
+        data-tech="C++|SFML|OOP|File Handling">
+        <div class="proj-icon" style="background:rgba(62,214,196,0.12); color:var(--teal);">CI</div>
+        <h3>Civic Issue Reporting System</h3>
+        <span class="proj-org">Academic Project · Object-Oriented Programming</span>
+        <p class="desc">C++/SFML desktop app for reporting civic issues, with citizen and admin roles, status tracking and file-based storage.</p>
+        <div class="proj-tags"><span>C++</span><span>SFML</span><span>OOP</span><span>File Handling</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+      <div class="proj-card" data-category="ai data academic" tabindex="0" role="button" aria-haspopup="dialog"
+        data-title="Real Estate House Price Prediction"
+        data-org="Academic Project · Machine Learning"
+        data-overview="A regression model that predicts house prices in Pakistan from property listing data sourced from Zameen.com."
+        data-problem="House prices vary widely with location, size and property attributes, making it hard for buyers and sellers to judge a fair price."
+        data-solution="Trained a Linear Regression model on Zameen.com listing data to estimate a property's price from its attributes."
+        data-features="Built on real Zameen.com property listing data|Linear Regression for price prediction|Predicts price from property attributes"
+        data-tech="Python|Linear Regression|Zameen.com Data">
+        <div class="proj-icon" style="background:rgba(242,169,59,0.12); color:var(--amber);">RE</div>
+        <h3>Real Estate House Price Prediction</h3>
+        <span class="proj-org">Academic Project · Machine Learning</span>
+        <p class="desc">Predicts house prices from Zameen.com listing data using a Linear Regression model.</p>
+        <div class="proj-tags"><span>Python</span><span>Linear Regression</span><span>Zameen.com Data</span></div>
+        <div class="proj-cta">View Details →</div>
+      </div>
+
+    </div>
+    <p class="no-results" id="no-results" hidden>No projects match this filter yet.</p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">05 · Education</span>
+      <h2>Academic foundation</h2>
+    </div>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <span class="tl-date">2024 — 2028 · 5TH SEMESTER</span>
+        <h3>Bachelor of Science in Artificial Intelligence (BSAI)</h3>
+        <span class="org">Air University, NASTP Lahore Campus</span>
+        <span class="meta">Lahore, Pakistan</span>
+      </div>
+      <div class="edu-card">
+        <span class="tl-date">2022 — 2024 · GRADE A</span>
+        <h3>Intermediate in Computer Science (ICS)</h3>
+        <span class="org">Army Public College for Boys</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<section id="highlight">
+  <div class="wrap">
+    <div class="highlight reveal">
+      <h2>Combining an academic foundation in Artificial Intelligence with hands-on experience building production-oriented software systems.</h2>
+      <div class="tags-row">
+        <span>AI</span><span>Software Engineering</span><span>Data</span><span>Real-World Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">06 · Contact</span>
+      <h2>Let's talk</h2>
+      <p>Open to conversations about AI/ML, Data Science, and Python development opportunities.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <p>The fastest way to reach me is by email, phone or LinkedIn.</p>
+        <div class="contact-item">
+          <div class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><span class="label">LOCATION</span><span class="value">Lahore, Pakistan</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 6l9 6 9-6"/></svg>
+          </div>
+          <div><span class="label">EMAIL</span><span class="value"><a href="mailto:farizgcb@gmail.com">farizgcb@gmail.com</a><button type="button" class="copy-btn" id="copy-email" aria-label="Copy email address">Copy</button></span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
+          </div>
+          <div><span class="label">PHONE</span><span class="value"><a href="tel:+922322419474">+92 322 2419474</a></span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div><span class="label">LINKEDIN</span><span class="value"><a href="https://www.linkedin.com/in/muhammad-fariz-04512234b" target="_blank" rel="noopener noreferrer">muhammad-fariz</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Muhammad Fariz</h4>
+        <p>AI Engineer | Machine Learning &amp; Python Developer</p>
+        <p>Lahore, Pakistan</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/muhammad-fariz-04512234b" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">© 2026 Muhammad Fariz. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Close project details">&times;</button>
+    <h3 id="modal-title"></h3>
+    <span class="modal-org" id="modal-org"></span>
+    <h5>Overview</h5>
+    <p id="modal-overview"></p>
+    <h5>Problem</h5>
+    <p id="modal-problem"></p>
+    <h5>Solution</h5>
+    <p id="modal-solution"></p>
+    <h5>Key Features</h5>
+    <ul id="modal-features"></ul>
+    <h5>Technologies</h5>
+    <div class="modal-tags" id="modal-tech"></div>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+// ---- Header scroll state ----
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+// ---- Mobile menu ----
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const closeMenu = document.getElementById('close-menu');
+hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// ---- Active nav section detection ----
+const sections = document.querySelectorAll('main section, .hero');
+const navLinks = document.querySelectorAll('[data-nav]');
+const activateLink = (id) => {
+  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+};
+if ('IntersectionObserver' in window){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) activateLink(entry.target.id);
+    });
+  }, {rootMargin: '-40% 0px -50% 0px'});
+  sections.forEach(s => { if (s.id) obs.observe(s); });
+}
+
+// ---- Scroll reveal ----
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window){
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => revealObs.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
+
+// ---- Animated counters ----
+const counters = document.querySelectorAll('[data-count]');
+const runCounter = (el) => {
+  const target = parseInt(el.getAttribute('data-count'), 10);
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target / 30));
+  const tick = () => {
+    current += step;
+    if (current >= target){ el.textContent = target; return; }
+    el.textContent = current;
+    requestAnimationFrame(tick);
+  };
+  tick();
+};
+if ('IntersectionObserver' in window){
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){ runCounter(entry.target); countObs.unobserve(entry.target); }
+    });
+  }, {threshold:0.5});
+  counters.forEach(c => countObs.observe(c));
+}
+
+// ---- Theme toggle (persisted) ----
+(function(){
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+  const sunPath = 'M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M12 8a4 4 0 100 8 4 4 0 000-8z';
+  const moonPath = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
+  function applyTheme(theme){
+    if (theme === 'light'){
+      root.setAttribute('data-theme', 'light');
+      icon.innerHTML = `<path d="${sunPath}"/>`;
+      toggleBtn.setAttribute('aria-label', 'Switch to dark theme');
+      toggleBtn.setAttribute('aria-pressed', 'true');
+    } else {
+      root.removeAttribute('data-theme');
+      icon.innerHTML = `<path d="${moonPath}"/>`;
+      toggleBtn.setAttribute('aria-label', 'Switch to light theme');
+      toggleBtn.setAttribute('aria-pressed', 'false');
+    }
+  }
+  const saved = localStorage.getItem('theme');
+  if (saved) applyTheme(saved);
+  toggleBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
+  });
+})();
+
+// ---- Project filtering ----
+(function(){
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#projects-grid .proj-card');
+  const noResults = document.getElementById('no-results');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      let visible = 0;
+      cards.forEach(card => {
+        const cats = (card.getAttribute('data-category') || '').split(' ');
+        const filterKey = filter === 'pia' ? 'pia' : filter;
+        const show = filter === 'all' || cats.includes(filterKey);
+        card.classList.toggle('hide', !show);
+        if (show) visible++;
+      });
+      noResults.hidden = visible !== 0;
+    });
+  });
+})();
+
+// ---- Project detail modal ----
+(function(){
+  const modal = document.getElementById('project-modal');
+  const cards = document.querySelectorAll('#projects-grid .proj-card');
+  const closeBtn = document.getElementById('modal-close');
+  let lastFocused = null;
+
+  function openModal(card){
+    document.getElementById('modal-title').textContent = card.getAttribute('data-title') || '';
+    document.getElementById('modal-org').textContent = card.getAttribute('data-org') || '';
+    document.getElementById('modal-overview').textContent = card.getAttribute('data-overview') || '';
+    document.getElementById('modal-problem').textContent = card.getAttribute('data-problem') || '';
+    document.getElementById('modal-solution').textContent = card.getAttribute('data-solution') || '';
+
+    const featuresList = document.getElementById('modal-features');
+    featuresList.innerHTML = '';
+    (card.getAttribute('data-features') || '').split('|').filter(Boolean).forEach(f => {
+      const li = document.createElement('li');
+      li.textContent = f;
+      featuresList.appendChild(li);
+    });
+
+    const techWrap = document.getElementById('modal-tech');
+    techWrap.innerHTML = '';
+    (card.getAttribute('data-tech') || '').split('|').filter(Boolean).forEach(t => {
+      const span = document.createElement('span');
+      span.textContent = t;
+      techWrap.appendChild(span);
+    });
+
+    lastFocused = document.activeElement;
+    modal.classList.add('open');
+    closeBtn.focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+  cards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(card); }
+    });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
+
+// ---- Back to top ----
+(function(){
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 480);
+  }, {passive:true});
+  btn.addEventListener('click', () => {
+    window.scrollTo({top:0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  });
+})();
+
+// ---- Copy email ----
+(function(){
+  const btn = document.getElementById('copy-email');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('farizgcb@gmail.com');
+      const original = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = original; }, 1800);
+    } catch (err){
+      btn.textContent = 'Copy failed';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+    }
+  });
+})();
+
+// ---- Hero network/circuit canvas (subtle, perf-friendly) ----
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes = [];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    w = canvas.width = canvas.offsetWidth * devicePixelRatio;
+    h = canvas.height = canvas.offsetHeight * devicePixelRatio;
+  }
+  function init(){
+    resize();
+    const count = Math.min(46, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 26000));
+    nodes = Array.from({length: count}, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+      vy: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+      r: Math.random() * 1.6 + 0.6
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    const maxDist = 150 * devicePixelRatio;
+    for (let i = 0; i < nodes.length; i++){
+      const n = nodes[i];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+      for (let j = i + 1; j < nodes.length; j++){
+        const m = nodes[j];
+        const dx = n.x - m.x, dy = n.y - m.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < maxDist){
+          ctx.strokeStyle = `rgba(62, 214, 196, ${0.14 * (1 - dist / maxDist)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for (const n of nodes){
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * devicePixelRatio, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(242, 169, 59, 0.45)';
+      ctx.fill();
+    }
+    if (!prefersReduced) requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', () => { resize(); }, {passive:true});
+  init();
+  draw();
+})();
+</script>
+</body>
+</html>
